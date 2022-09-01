@@ -1,4 +1,10 @@
-import React from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux/es/exports";
+
+import { getCurrentUser } from "./utils/firebase/firebase.utils";
+
+import { checkUserSession } from "./store/user/userAction";
+
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Home from "./routes/home/Home";
@@ -7,6 +13,12 @@ import Shop from "./routes/shop/Shop";
 import Checkout from "./components/checkout/Checkout";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(checkUserSession());
+  }, []);
+
   return (
     <Routes>
       <Route path="/" element={<Navbar />}>
