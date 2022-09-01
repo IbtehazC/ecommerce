@@ -1,23 +1,21 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
-  const navigate = useNavigate();
-
   return (
     <div className="container max-wsreen bg-[#DDDDDD] mx-auto flex justify-center items-center rounded-3xl">
       <div className=" pl-16">
         <h2 className="text-5xl font-semibold">Gift Combo</h2>
-        <p className=" text-xl font-light">
+        <p className=" text-xl font-light mb-8">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
           mollitia, molestiae quas vel sint commodi r
         </p>
-        <button
-          className="bg-[#F32424] h-14 w-48 rounded-full text-white text-xl mt-16"
-          onClick={navigate("/shop")}
+        <Link
+          className="bg-[#F32424] p-4 rounded-full text-white text-xl"
+          to="/shop"
         >
           Shop Now
-        </button>
+        </Link>
       </div>
 
       <img
