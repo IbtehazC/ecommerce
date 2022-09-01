@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link, Outlet } from "react-router-dom";
 
 import { ReactComponent as CrownLogo } from "../../assets/crown.svg";
@@ -11,13 +11,7 @@ import { signOutUser } from "../../utils/firebase/firebase.utils";
 import CartIcon from "../cart-icon/CartIcon";
 import CartDropdown from "../cart-dropdown/CartDropdown";
 
-import {
-  LogoContainer,
-  NavigationContainer,
-  NavLinksContainer,
-  NavLink,
-} from "./NavbarStyles";
-
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
   const currentUser = useSelector(selectCurrentUser);
@@ -27,7 +21,6 @@ export default function Navbar() {
 
   return (
     <>
-
       <div className=" w-full flex justify-between items-center mb-6">
         <div className="flex items-center gap-10">
           <Link className="w-16 p-6" to="/">
@@ -43,7 +36,6 @@ export default function Navbar() {
           </div>
         </div>
         <div className="flex items-center justify-end">
-
           {currentUser ? (
             <div className="p-8 cursor-pointer" as="span" onClick={signOutUser}>
               logout
