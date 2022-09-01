@@ -1,7 +1,5 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
-
-import { useSelector } from "react-redux/es/hooks/useSelector";
+import React, { useContext } from "react";
+import { Link, Outlet } from "react-router-dom";
 
 import { ReactComponent as CrownLogo } from "../../assets/crown.svg";
 
@@ -20,6 +18,7 @@ import {
   NavLink,
 } from "./NavbarStyles";
 
+
 export default function Navbar() {
   const currentUser = useSelector(selectCurrentUser);
 
@@ -28,23 +27,36 @@ export default function Navbar() {
 
   return (
     <>
-      <NavigationContainer>
-        <LogoContainer to="/">
-          <CrownLogo className="logo" />
-        </LogoContainer>
-        <NavLinksContainer>
-          <NavLink to="/shop">SHOP</NavLink>
+
+      <div className=" w-full flex justify-between items-center mb-6">
+        <div className="flex items-center gap-10">
+          <Link className="w-16 p-6" to="/">
+            <CrownLogo className="logo" />
+          </Link>
+          <div className="">
+            <Link className="w-16 p-6" to="/">
+              Home
+            </Link>
+            <Link className="p-8 cursor-pointer" to="/shop">
+              Shop
+            </Link>
+          </div>
+        </div>
+        <div className="flex items-center justify-end">
+
           {currentUser ? (
-            <NavLink as="span" onClick={signOutUser}>
-              SIGN OUT
-            </NavLink>
+            <div className="p-8 cursor-pointer" as="span" onClick={signOutUser}>
+              logout
+            </div>
           ) : (
-            <NavLink to="/auth">SIGN IN</NavLink>
+            <Link className="p-8 cursor-pointer" to="/auth">
+              login
+            </Link>
           )}
           <CartIcon />
-        </NavLinksContainer>
+        </div>
         {isCartOpen && <CartDropdown />}
-      </NavigationContainer>
+      </div>
       <Outlet />
     </>
   );

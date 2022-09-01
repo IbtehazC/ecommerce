@@ -14,29 +14,11 @@ const categories = [
     imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
     route: "shop/jackets",
   },
-  {
-    id: 3,
-    title: "sneakers",
-    imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
-    route: "shop/sneakers",
-  },
-  {
-    id: 4,
-    title: "womens",
-    imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
-    route: "shop/woments",
-  },
-  {
-    id: 5,
-    title: "mens",
-    imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
-    route: "shop/mens",
-  },
 ];
 
 export default function Directory() {
   return (
-    <div className="categories-container">
+    <div className="container flex justify-between mx-auto gap-8 pb-16">
       {categories.map((category) => (
         <DirectoryItem key={category.id} category={category} />
       ))}
