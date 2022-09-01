@@ -13,10 +13,10 @@ export const BaseButton = styledComponents.button`
   text-transform: uppercase;
   font-family: 'Open Sans';
   font-weight: bolder;
-  border: none;
   cursor: pointer;
   display: flex;
   justify-content: center;
+  border-radius: 0.5rem
 
   &:hover {
     background-color: white;
@@ -41,8 +41,8 @@ export const InvertedButton = styledComponents(BaseButton)`
   border: 1px solid black;
 
   &:hover {
-    background-color: black;
+    background-color: #F32424;
     color: white;
     border: none;
   }
-`
+`;
