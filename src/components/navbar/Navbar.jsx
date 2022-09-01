@@ -1,21 +1,33 @@
 import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
+
 import { ReactComponent as CrownLogo } from "../../assets/crown.svg";
 
-import { UserContext } from "../../context/UserContext";
-import { CartContext } from "../../context/CartContext";
+import { selectCurrentUser } from "../../store/user/userSelector";
+import { selectIsCartOpen } from "../../store/cart/cartSelector";
 
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 
 import CartIcon from "../cart-icon/CartIcon";
 import CartDropdown from "../cart-dropdown/CartDropdown";
 
+import {
+  LogoContainer,
+  NavigationContainer,
+  NavLinksContainer,
+  NavLink,
+} from "./NavbarStyles";
+
+
 export default function Navbar() {
-  const { currentUser } = useContext(UserContext);
-  const { isCartOpen } = useContext(CartContext);
+  const currentUser = useSelector(selectCurrentUser);
+
+  // const { isCartOpen } = useContext(CartContext);
+  const isCartOpen = useSelector(selectIsCartOpen);
 
   return (
     <>
+
       <div className=" w-full flex justify-between items-center mb-6">
         <div className="flex items-center gap-10">
           <Link className="w-16 p-6" to="/">
@@ -31,6 +43,7 @@ export default function Navbar() {
           </div>
         </div>
         <div className="flex items-center justify-end">
+
           {currentUser ? (
             <div className="p-8 cursor-pointer" as="span" onClick={signOutUser}>
               logout
